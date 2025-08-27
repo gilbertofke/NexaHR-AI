@@ -30,5 +30,23 @@
       "question": "Do you have any questions about the role or our company culture?",
       "answer": "Asked about team structure, code review processes, technical decision-making, and professional development opportunities."
     }
-  ]
+  ],
+  "hrMetrics": {
+    "overallScore": 8.5,
+    "communicationSkills": 9,
+    "technicalCompetency": 9,
+    "problemSolving": 8,
+    "culturalFit": 8,
+    "experience": 9
+  },
+  "redFlags": [],
+  "strengths": [
+    "Strong technical depth in modern web technologies",
+    "Excellent communication and ability to explain complex concepts",
+    "Proven experience with performance optimization",
+    "Shows initiative and continuous learning",
+    "Good questions about company culture and processes"
+  ],
+  "recommendations": "Strong candidate for senior frontend/full-stack role. Recommend proceeding to technical assessment and team interview. Consider for team lead positions given communication skills and technical depth.",
+  "interviewQuality": "excellent"
 }

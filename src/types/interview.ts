@@ -9,6 +9,18 @@ export type Analysis = {
   sentiment?: string;
   keywords?: string[];
   questions?: { question: string; answer: string }[];
+  hrMetrics?: {
+    overallScore: number; // 1-10
+    communicationSkills: number; // 1-10
+    technicalCompetency: number; // 1-10
+    problemSolving: number; // 1-10
+    culturalFit: number; // 1-10
+    experience: number; // 1-10
+  };
+  redFlags?: string[];
+  strengths?: string[];
+  recommendations?: string;
+  interviewQuality?: 'excellent' | 'good' | 'fair' | 'poor';
 };
 
 export type Interview = {

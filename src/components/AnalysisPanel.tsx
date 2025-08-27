@@ -1,4 +1,4 @@
-import { TrendingUp, MessageSquare, Hash, Brain, Download } from 'lucide-react';
+import { TrendingUp, MessageSquare, Hash, Brain, Download, CheckCircle, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -66,8 +66,9 @@ export const AnalysisPanel = ({ analysis, interviewId }: AnalysisPanelProps) => 
 
       <div className="flex-1 overflow-hidden">
         <Tabs defaultValue="summary" className="h-full flex flex-col">
-          <TabsList className="grid w-full grid-cols-4 m-4">
+          <TabsList className="grid w-full grid-cols-5 m-4 text-xs">
             <TabsTrigger value="summary">Summary</TabsTrigger>
+            <TabsTrigger value="metrics">HR Score</TabsTrigger>
             <TabsTrigger value="sentiment">Sentiment</TabsTrigger>
             <TabsTrigger value="keywords">Keywords</TabsTrigger>
             <TabsTrigger value="qa">Q&A</TabsTrigger>
@@ -120,6 +121,133 @@ export const AnalysisPanel = ({ analysis, interviewId }: AnalysisPanelProps) => 
                         </div>
                       ))}
                     </div>
+                  </CardContent>
+                </Card>
+              )}
+            </TabsContent>
+
+            <TabsContent value="metrics" className="mt-0 space-y-4">
+              <Card>
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center text-sm">
+                    <TrendingUp className="h-4 w-4 mr-2 text-nexa-purple" />
+                    HR Assessment Scores
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {analysis.hrMetrics ? (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span>Overall Score:</span>
+                            <Badge className="bg-gradient-brand text-white">
+                              {analysis.hrMetrics.overallScore}/10
+                            </Badge>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Communication:</span>
+                            <span className="font-medium">{analysis.hrMetrics.communicationSkills}/10</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Technical:</span>
+                            <span className="font-medium">{analysis.hrMetrics.technicalCompetency}/10</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span>Problem Solving:</span>
+                            <span className="font-medium">{analysis.hrMetrics.problemSolving}/10</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Cultural Fit:</span>
+                            <span className="font-medium">{analysis.hrMetrics.culturalFit}/10</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Experience:</span>
+                            <span className="font-medium">{analysis.hrMetrics.experience}/10</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {analysis.interviewQuality && (
+                        <div className="pt-2 border-t">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm">Interview Quality:</span>
+                            <Badge className={`capitalize ${
+                              analysis.interviewQuality === 'excellent' ? 'bg-nexa-green/10 text-nexa-green' :
+                              analysis.interviewQuality === 'good' ? 'bg-nexa-blue/10 text-nexa-blue' :
+                              analysis.interviewQuality === 'fair' ? 'bg-nexa-orange/10 text-nexa-orange' :
+                              'bg-nexa-red/10 text-nexa-red'
+                            }`}>
+                              {analysis.interviewQuality}
+                            </Badge>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground italic">
+                      HR metrics not available yet.
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+
+              {analysis.strengths && analysis.strengths.length > 0 && (
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 mr-2 text-nexa-green" />
+                      Key Strengths
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-1 text-sm">
+                      {analysis.strengths.map((strength, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-nexa-green mr-2">•</span>
+                          <span className="text-muted-foreground">{strength}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
+
+              {analysis.redFlags && analysis.redFlags.length > 0 && (
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="flex items-center text-sm">
+                      <AlertCircle className="h-4 w-4 mr-2 text-nexa-red" />
+                      Areas of Concern
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-1 text-sm">
+                      {analysis.redFlags.map((flag, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-nexa-red mr-2">•</span>
+                          <span className="text-muted-foreground">{flag}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
+
+              {analysis.recommendations && (
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="flex items-center text-sm">
+                      <Brain className="h-4 w-4 mr-2 text-nexa-blue" />
+                      Hiring Recommendation
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {analysis.recommendations}
+                    </p>
                   </CardContent>
                 </Card>
               )}

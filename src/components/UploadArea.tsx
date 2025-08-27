@@ -10,8 +10,12 @@ import { UploadProgress } from '../types/interview';
 const ACCEPTED_TYPES = {
   'audio/mpeg': ['.mp3'],
   'audio/wav': ['.wav'],
+  'audio/webm': ['.webm'],
   'video/mp4': ['.mp4'],
   'video/quicktime': ['.mov'],
+  'video/webm': ['.webm'],
+  'video/x-msvideo': ['.avi'],
+  'video/x-matroska': ['.mkv'],
 };
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
@@ -132,7 +136,7 @@ export const UploadArea = () => {
               Drag & drop interview files here
             </p>
             <p className="text-sm text-muted-foreground mb-4">
-              Supports MP3, WAV, MP4, MOV • Max 100MB per file
+              Supports MP3, WAV, WebM, MP4, MOV, AVI, MKV • Max 100MB per file
             </p>
             <Button variant="outline" size="sm">
               Choose Files

@@ -61,7 +61,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'nexa-navy': {
+					DEFAULT: '#1a1a2e',
+					dark: '#16213e',
+					light: '#0f3460'
+				},
+				'nexa-red': '#ff0844',
+				'nexa-orange': '#ff6348',
+				'nexa-purple': '#6c5ce7',
+				'nexa-pink': '#fd79a8',
+				'nexa-violet': '#e84393',
+				'nexa-blue': '#0984e3',
+				'nexa-green': '#00b894'
+			},
+			backgroundImage: {
+				'gradient-brand': 'linear-gradient(90deg, #ff6348, #ff0844, #6c5ce7)',
+				'gradient-accent': 'linear-gradient(135deg, #ff0844, #e84393)',
+				'gradient-hero': 'linear-gradient(135deg, #1a1a2e, #0f3460, #6c5ce7)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

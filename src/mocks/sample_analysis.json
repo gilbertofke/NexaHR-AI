@@ -1,0 +1,34 @@
+{
+  "summary": "This interview covered the candidate's technical background in full-stack development, with emphasis on React, TypeScript, and backend technologies. The candidate demonstrated strong problem-solving skills through their real-time analytics dashboard project, showing expertise in performance optimization and scalable architecture. They showed genuine interest in the role through thoughtful questions about team structure and professional development.",
+  "sentiment": "positive",
+  "keywords": [
+    "React",
+    "TypeScript",
+    "full-stack development",
+    "performance optimization",
+    "real-time analytics",
+    "WebSocket",
+    "Redis caching",
+    "AWS",
+    "Docker",
+    "code reviews"
+  ],
+  "questions": [
+    {
+      "question": "Can you walk me through a challenging project you worked on recently?",
+      "answer": "Led development of a real-time analytics dashboard for e-commerce platform, focusing on handling massive data volume while keeping UI responsive using React with WebSocket connections."
+    },
+    {
+      "question": "How did you handle the performance optimization for the real-time updates?",
+      "answer": "Used React.memo and useMemo to prevent unnecessary re-renders, batched updates over 100ms intervals, optimized database queries and added Redis caching."
+    },
+    {
+      "question": "What technologies do you prefer to work with?",
+      "answer": "Frontend: React and TypeScript. Backend: Node.js, Python, and Go. Cloud: AWS and Docker for deployment."
+    },
+    {
+      "question": "Do you have any questions about the role or our company culture?",
+      "answer": "Asked about team structure, code review processes, technical decision-making, and professional development opportunities."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "start": 0,
+    "end": 5.2,
+    "text": "Hello John, thank you for taking the time to interview with us today. How are you feeling?"
+  },
+  {
+    "start": 5.2,
+    "end": 8.1,
+    "text": "I'm doing great, thank you. I'm excited about this opportunity."
+  },
+  {
+    "start": 8.1,
+    "end": 14.7,
+    "text": "Excellent. Let's start with you telling me about your background and what brought you to software development."
+  },
+  {
+    "start": 14.7,
+    "end": 25.3,
+    "text": "Well, I've been programming for about eight years now. I started during college with Java and Python, and then moved into full-stack development after graduation."
+  },
+  {
+    "start": 25.3,
+    "end": 32.1,
+    "text": "That's impressive. Can you walk me through a challenging project you worked on recently?"
+  },
+  {
+    "start": 32.1,
+    "end": 48.9,
+    "text": "Sure. Last year I led the development of a real-time analytics dashboard for our e-commerce platform. The main challenge was handling the massive data volume while keeping the UI responsive. We used React with WebSocket connections and implemented efficient data streaming."
+  },
+  {
+    "start": 48.9,
+    "end": 55.2,
+    "text": "How did you handle the performance optimization for the real-time updates?"
+  },
+  {
+    "start": 55.2,
+    "end": 72.8,
+    "text": "We implemented several strategies. First, we used React.memo and useMemo to prevent unnecessary re-renders. We also batched updates using a custom hook that collected changes over 100ms intervals. For the backend, we optimized our database queries and added Redis caching."
+  },
+  {
+    "start": 72.8,
+    "end": 78.4,
+    "text": "That sounds like a comprehensive approach. What technologies do you prefer to work with?"
+  },
+  {
+    "start": 78.4,
+    "end": 92.1,
+    "text": "I really enjoy working with React and TypeScript on the frontend. For backend development, I'm comfortable with Node.js, Python, and Go. I also have experience with cloud platforms like AWS and Docker for deployment."
+  },
+  {
+    "start": 92.1,
+    "end": 97.3,
+    "text": "Great. Do you have any questions about the role or our company culture?"
+  },
+  {
+    "start": 97.3,
+    "end": 108.7,
+    "text": "Yes, I'm curious about the team structure and how you approach code reviews and technical decision-making. Also, what opportunities are there for professional development?"
+  },
+  {
+    "start": 108.7,
+    "end": 125.4,
+    "text": "Excellent questions. We have cross-functional teams of 4-6 developers, and we do peer code reviews for all changes. Technical decisions are made collaboratively with input from senior developers and architects. For professional development, we offer conference attendance, online courses, and internal tech talks."
+  }
+]

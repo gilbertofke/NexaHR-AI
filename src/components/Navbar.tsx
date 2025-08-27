@@ -1,0 +1,48 @@
+import { Moon, Sun, Mic } from 'lucide-react';
+import { Button } from './ui/button';
+import { useThemeStore } from '../store/theme';
+import { Link, useLocation } from 'react-router-dom';
+
+export const Navbar = () => {
+  const { theme, toggleTheme } = useThemeStore();
+  const location = useLocation();
+
+  return (
+    <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-3">
+          <div className="h-8 w-8 bg-gradient-brand rounded-lg flex items-center justify-center">
+            <Mic className="h-5 w-5 text-white" />
+          </div>
+          <span className="text-xl font-bold bg-gradient-brand bg-clip-text text-transparent">
+            Nexa Interviews
+          </span>
+        </Link>
+
+        <nav className="flex items-center space-x-6">
+          <Link
+            to="/"
+            className={`text-sm font-medium transition-colors hover:text-primary ${
+              location.pathname === '/' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            Dashboard
+          </Link>
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={toggleTheme}
+            className="h-8 w-8 p-0"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
+        </nav>
+      </div>
+    </header>
+  );
+};

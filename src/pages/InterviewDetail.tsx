@@ -36,6 +36,32 @@ export const InterviewDetail = () => {
     }
   };
 
+  const handleExport = (interview: any) => {
+    const exportData = {
+      interview: {
+        id: interview.id,
+        filename: interview.original_name,
+        upload_date: interview.upload_date,
+        status: interview.status,
+      },
+      transcript: interview.transcript,
+      analysis: interview.analysis,
+      tags: [], // Would be from Zustand store in real app
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+      type: 'application/json',
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${interview.original_name}_export.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const formatFileSize = (bytes: number) => {
     const mb = bytes / (1024 * 1024);
     return `${mb.toFixed(1)} MB`;
@@ -140,9 +166,9 @@ export const InterviewDetail = () => {
           )}
           
           {interview.status === 'completed' && interview.transcript && (
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => handleExport(interview)}>
               <Download className="h-4 w-4 mr-2" />
-              Export
+              Export JSON
             </Button>
           )}
         </div>

@@ -23,9 +23,9 @@ export const Navbar = () => {
 
         <nav className="flex items-center space-x-6">
           <Link
-            to="/"
+            to="/app"
             className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === '/' ? 'text-primary' : 'text-muted-foreground'
+              location.pathname.startsWith('/app') ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
             Dashboard

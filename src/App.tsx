@@ -7,7 +7,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Navbar } from "./components/Navbar";
 import { Dashboard } from "./pages/Dashboard";
 import { InterviewDetail } from "./pages/InterviewDetail";
-import NotFound from "./pages/NotFound";
+import { NotFound } from "./pages/NotFound";
 
 const queryClient = new QueryClient({
   defaultOptions: {

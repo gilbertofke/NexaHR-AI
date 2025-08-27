@@ -63,6 +63,16 @@ Configuration
 - UI kit and styling: shadcn/ui + Tailwind for accessible, consistent, and quickly composable components.
 - Error handling and UX: toasts on success/failure; loading and empty states throughout the dashboard/detail pages.
 
+### Trade‑offs under tight time constraints
+
+| Area | Choice | Trade‑off |
+| --- | --- | --- |
+| Backend | FastAPI in‑memory stub | Fast to build; no persistence or auth |
+| Transcription/Analysis | Sample JSON + randomized output | Realism for UX; not production‑grade accuracy |
+| State mgmt | TanStack Query + small Zustand store | Simple and composable; no global app framework |
+| Testing | Manual verification | Faster delivery; missing automated coverage |
+| Accessibility | shadcn/ui defaults | Good baseline; needs full a11y audit later |
+
 ## Known Limitations
 
 - Persistence: FastAPI stub stores data in memory and the `uploads/` folder; no database.
@@ -83,6 +93,17 @@ Configuration
 - Vite proxy and environment configuration for a zero-CORS local setup.
 - Branding cleanup and favicon refresh.
 
+Timeframe note: The above was delivered in ~5 focused hours, optimizing for end‑to‑end UX, stable developer ergonomics, and clear extension points over exhaustive hardening.
+
 ## Deploy
 
 Deploy the frontend to Vercel/Netlify/Render. Point `VITE_API_BASE_URL` to your deployed API. The stub is intended for local development and demos.
+
+## Potential and Next Steps
+
+- Replace stub with real services: storage (S3), transcription (e.g., Whisper/ASR API), and analysis (LLM or custom models).
+- Persist interviews and transcripts in a database (Postgres + Prisma/Drizzle).
+- Authentication, roles, and KYC where needed.
+- Team features: shared tags, comments, review workflows.
+- Exports: PDF/CSV, shareable links, and webhooks.
+- Observability: metrics, structured logging, error tracking.

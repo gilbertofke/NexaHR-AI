@@ -1,84 +1,88 @@
 # Nexa Interviews
 
-## Project info
+A modern, mobile-first web app for uploading interview recordings, generating transcripts, and surfacing AI-driven insights. Built for fast feedback loops, a clean UX, and an easily swappable backend via a FastAPI stub.
 
-This repository contains the Nexa Interviews web application.
+## Overview
 
-## How can I edit this code?
+Nexa Interviews lets you:
+- Upload audio/video files (mp3, wav, mp4, mov) with client-side validation and metadata display.
+- View a synchronized transcript (scrollable, click-to-seek, highlight active line, search + tag selections).
+- See AI analysis (summary, sentiment badges, keywords, Q&A parsing). In dev, analysis is simulated and randomized.
+- Manage your library from the dashboard (search/filter, status badges, quick actions).
 
-There are several ways of editing your application.
+Architecture highlights:
+- Frontend: React + TypeScript + Vite, Tailwind CSS, shadcn/ui, Zustand (UI state), TanStack Query (server state).
+- Backend (stub): FastAPI with CORS enabled, in-memory DB, randomized analysis, and static sample data.
+- Dev proxy: Vite proxies "/api/*" → FastAPI (localhost:8000) for zero-config local development.
 
-## Local Development
+## Setup
 
-**Use your preferred IDE**
+Prerequisites
+- Node.js 18+
+- Python 3.10+
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+Install dependencies
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+cd brand-cast
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## Deployment
-
-Deploy with your preferred platform (Vercel, Netlify, Render, etc.).
-
-## Running the FastAPI stub locally
-
-1. Install Python 3.10+.
-2. Setup the virtual environment and install deps:
-
+Run backend stub (FastAPI)
 ```bash
+# one-time setup
 npm run backend:setup
+
+# start the API (http://localhost:8000)
+npm run backend:start
 ```
 
-3. Start both backend and frontend during development:
-
+Run frontend (Vite)
 ```bash
+npm run dev
+# App runs at http://localhost:8080 and proxies /api to http://localhost:8000
+```
+
+Run both together
+```bash
+# installed in this repo
 npm run dev:full
 ```
 
-The frontend dev server proxies API calls from `/api/*` to `http://localhost:8000` (see `vite.config.ts`).
+Configuration
+- `VITE_API_BASE_URL` (optional): set to an absolute URL in production; in dev, defaults to "/api" and uses the proxy.
+- Proxy config lives in `vite.config.ts` under `server.proxy`.
 
-To run only the backend stub:
+## Implementation Decisions
 
-```bash
-npm run backend:start
-```
+- TypeScript everywhere: safer refactors, clearer contracts (`src/types/interview.ts`).
+- TanStack Query: caching, retries, optimistic UI for upload/transcribe/delete flows.
+- Zustand for light UI state: search term, current playback time, tags.
+- Dev-first backend: FastAPI stub with in-memory store and randomized analysis so the UI can be validated end‑to‑end quickly.
+- Vite proxy vs. absolute URLs: relative "/api" avoids CORS/setup pain; `VITE_API_BASE_URL` allows easy production wiring.
+- UI kit and styling: shadcn/ui + Tailwind for accessible, consistent, and quickly composable components.
+- Error handling and UX: toasts on success/failure; loading and empty states throughout the dashboard/detail pages.
+
+## Known Limitations
+
+- Persistence: FastAPI stub stores data in memory and the `uploads/` folder; no database.
+- Real transcription/LLM: simulated using sample JSON and randomized analysis; replace with your services for production.
+- Auth/KYC/roles: not implemented.
+- Accessibility: good defaults via shadcn/ui, but full audit not completed.
+- Testing: unit/e2e tests not included due to time constraints.
+- Mobile: responsive layouts implemented; further tuning may be needed for very small screens.
+
+## What I achieved in 5 hours
+
+- Frontend scaffolding with React/TS, routing, and a polished UI layer.
+- Upload flow with validation, progress, toasts, and metadata injection.
+- Dashboard with search, status badges, quick actions (view, transcribe, delete).
+- Detail page with audio player, synchronized transcript, search highlight, and tagging.
+- Analysis panel rendering summary, sentiment, keywords, and Q&A; randomized results after transcription.
+- FastAPI stub backend with endpoints for upload/list/get/transcribe/status/delete, plus sample data wiring.
+- Vite proxy and environment configuration for a zero-CORS local setup.
+- Branding cleanup and favicon refresh.
+
+## Deploy
+
+Deploy the frontend to Vercel/Netlify/Render. Point `VITE_API_BASE_URL` to your deployed API. The stub is intended for local development and demos.

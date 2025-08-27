@@ -38,12 +38,12 @@ const Index = () => {
                 ))}
               </div>
               <div className="flex items-center gap-3">
-                <Link to="/">
+                <Link to="/app">
                   <Button variant="brand" size="lg" className="gap-2">
                     Get Started <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link to="/">
+                <Link to="/app">
                   <Button variant="outline" size="lg" className="gap-2">
                     Live Demo <Sparkles className="h-4 w-4" />
                   </Button>

@@ -99,6 +99,24 @@ Timeframe note: The above was delivered in ~5 focused hours, optimizing for endâ
 
 Deploy the frontend to Vercel/Netlify/Render. Point `VITE_API_BASE_URL` to your deployed API. The stub is intended for local development and demos.
 
+### Render (Backend - FastAPI)
+
+1) Fork/clone this repo to your GitHub.
+2) In Render, create a new Web Service from this repo.
+   - Environment: Python
+   - Build command: `pip install -r public/docs/requirements.txt`
+   - Start command: `uvicorn public.docs.main:app --host 0.0.0.0 --port $PORT`
+   - Environment variables:
+     - `UPLOAD_DIR=./uploads`
+3) Deploy. Note your public URL, e.g. `https://nexa-fastapi-stub.onrender.com`.
+
+### Vercel (Frontend)
+
+1) Set `VITE_API_BASE_URL` in Vercel Project Settings â†’ Environment Variables to your Render URL (e.g., `https://nexa-fastapi-stub.onrender.com/api`).
+2) Ensure `Build Command: vite build`, `Output Directory: dist`.
+3) Add `vercel.json` route to proxy `/api/*` to your backend if you prefer routes-based proxying.
+4) Deploy from GitHub.
+
 ## Potential and Next Steps
 
 - Replace stub with real services: storage (S3), transcription (e.g., Whisper/ASR API), and analysis (LLM or custom models).

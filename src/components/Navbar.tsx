@@ -1,4 +1,4 @@
-import { Moon, Sun, Mic } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { Button } from './ui/button';
 import { useThemeStore } from '../store/theme';
 import { Link, useLocation } from 'react-router-dom';
@@ -11,8 +11,10 @@ export const Navbar = () => {
     <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-3">
-          <div className="h-8 w-8 bg-gradient-brand rounded-lg flex items-center justify-center">
-            <Mic className="h-5 w-5 text-white" />
+          <div className="h-8 w-8 rounded-sm flex items-center justify-center" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="24" height="24" fill="#FF7A00" rx="2" ry="2" />
+            </svg>
           </div>
           <span className="text-xl font-bold bg-gradient-brand bg-clip-text text-transparent">
             Nexa Interviews

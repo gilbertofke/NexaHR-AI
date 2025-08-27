@@ -1,6 +1,8 @@
 import { Interview } from '../types/interview';
 
-const BASE_URL = 'http://localhost:8000/api';
+// Use relative "/api" so Vite dev proxy can forward to FastAPI.
+// Allow override via VITE_API_BASE_URL for production builds.
+const BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || '/api';
 
 class ApiClient {
   private async request<T>(endpoint: string, options?: RequestInit): Promise<T> {
@@ -90,6 +92,12 @@ class ApiClient {
       console.info(`Mock transcription started for interview ${id}`);
       return { status: 'processing' };
     }
+  }
+
+  async deleteInterview(id: string): Promise<{ ok: boolean }> {
+    return await this.request<{ ok: boolean }>(`/interviews/${id}`, {
+      method: 'DELETE',
+    });
   }
 }
 

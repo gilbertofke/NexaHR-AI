@@ -1,0 +1,25 @@
+{
+  "summary": "Candidate demonstrates solid React/TypeScript experience, strong focus on accessibility, state management, and testing.",
+  "sentiment": "positive",
+  "keywords": [
+    "React",
+    "TypeScript",
+    "React Query",
+    "Zustand",
+    "FastAPI",
+    "Accessibility",
+    "Testing",
+    "Real-time UI",
+    "Dark mode"
+  ],
+  "questions": [
+    {
+      "q": "Could you introduce yourself and your recent experience with React?",
+      "a": "I'm a full\u2011stack developer focusing on React and TypeScript on the frontend."
+    },
+    {
+      "q": "What tooling did you use for state management?",
+      "a": "React Query for server state and Zustand for local state."
+    }
+  ]
+}

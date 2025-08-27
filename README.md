@@ -1,22 +1,18 @@
-# Welcome to your Lovable project
+# Nexa Interviews
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/3b50b465-9134-45b6-9847-fe65740436e4
+This repository contains the Nexa Interviews web application.
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/3b50b465-9134-45b6-9847-fe65740436e4) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
+## Local Development
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -60,14 +56,29 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/3b50b465-9134-45b6-9847-fe65740436e4) and click on Share -> Publish.
+Deploy with your preferred platform (Vercel, Netlify, Render, etc.).
 
-## Can I connect a custom domain to my Lovable project?
+## Running the FastAPI stub locally
 
-Yes, you can!
+1. Install Python 3.10+.
+2. Setup the virtual environment and install deps:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm run backend:setup
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+3. Start both backend and frontend during development:
+
+```bash
+npm run dev:full
+```
+
+The frontend dev server proxies API calls from `/api/*` to `http://localhost:8000` (see `vite.config.ts`).
+
+To run only the backend stub:
+
+```bash
+npm run backend:start
+```

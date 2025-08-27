@@ -1,0 +1,62 @@
+{
+  "audio_url": "sample_audio_placeholder.mp3",
+  "language": "en",
+  "duration_sec": 92.4,
+  "transcript": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": "Hello, thanks for joining the interview today."
+    },
+    {
+      "start": 3.3,
+      "end": 8.5,
+      "text": "Could you introduce yourself and your recent experience with React?"
+    },
+    {
+      "start": 8.6,
+      "end": 15.0,
+      "text": "Sure. I'm a full\u2011stack developer focusing on React and TypeScript on the frontend."
+    },
+    {
+      "start": 15.1,
+      "end": 22.0,
+      "text": "Recently I led a project building a chat interface with real\u2011time updates and accessibility in mind."
+    },
+    {
+      "start": 22.1,
+      "end": 30.8,
+      "text": "We used React Query for server state and Zustand for local UI state to keep things predictable."
+    },
+    {
+      "start": 30.9,
+      "end": 39.0,
+      "text": "On the backend, we exposed a FastAPI service for transcripts and analysis results."
+    },
+    {
+      "start": 39.1,
+      "end": 46.0,
+      "text": "I also implemented keyboard shortcuts and screen reader support for the player controls."
+    },
+    {
+      "start": 46.1,
+      "end": 55.5,
+      "text": "In terms of testing, I covered core components and a small e2e flow for upload to display."
+    },
+    {
+      "start": 55.6,
+      "end": 66.2,
+      "text": "We shipped a dark mode and responsive layout to handle mobile data collection interviews."
+    },
+    {
+      "start": 66.3,
+      "end": 77.0,
+      "text": "If I had more time, I'd add word\u2011level timestamps and an editing workflow for reviewers."
+    },
+    {
+      "start": 77.1,
+      "end": 92.4,
+      "text": "Overall the team reduced review time by 35% and increased accessibility compliance scores."
+    }
+  ]
+}

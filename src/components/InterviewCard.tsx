@@ -1,14 +1,19 @@
-import { Calendar, FileAudio, FileVideo, HardDrive } from 'lucide-react';
+import { Calendar, FileAudio, FileVideo, HardDrive, Trash2, PlayCircle, FileText, BarChart3 } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 import { Interview } from '../types/interview';
 import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
+import { useDeleteInterview, useTranscribeInterview } from '../hooks/useInterviews';
 
 interface InterviewCardProps {
   interview: Interview;
 }
 
 export const InterviewCard = ({ interview }: InterviewCardProps) => {
+  const deleteMutation = useDeleteInterview();
+  const transcribeMutation = useTranscribeInterview();
+
   const formatFileSize = (bytes: number) => {
     const mb = bytes / (1024 * 1024);
     return `${mb.toFixed(1)} MB`;
@@ -96,11 +101,45 @@ export const InterviewCard = ({ interview }: InterviewCardProps) => {
             </div>
           </div>
 
+          <div className="mt-4 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Link to={`/interview/${interview.id}`} onClick={(e) => e.stopPropagation()}>
+                <Button variant="secondary" size="sm">
+                  <FileText className="h-4 w-4 mr-1" />
+                  View Transcript
+                </Button>
+              </Link>
+              <Link to={`/interview/${interview.id}`} onClick={(e) => e.stopPropagation()}>
+                <Button variant="secondary" size="sm">
+                  <BarChart3 className="h-4 w-4 mr-1" />
+                  View Analysis
+                </Button>
+              </Link>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={(e) => { e.preventDefault(); transcribeMutation.mutate(interview.id); }}
+              disabled={interview.status === 'processing' || transcribeMutation.isPending}
+            >
+              <PlayCircle className={`h-4 w-4 mr-1 ${transcribeMutation.isPending ? 'animate-pulse' : ''}`} />
+              {interview.status === 'uploaded' ? (transcribeMutation.isPending ? 'Starting…' : 'Transcribe') : 'Re-run'}
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={(e) => { e.preventDefault(); deleteMutation.mutate(interview.id); }}
+            >
+              <Trash2 className="h-4 w-4 mr-1" />
+              Delete
+            </Button>
+          </div>
+
           {interview.status === 'completed' && (
             <div className="mt-4 pt-4 border-t border-border">
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span>Transcript available</span>
-                <span>Analysis ready</span>
+              <div className="flex justify-between text-xs">
+                <span className="px-2 py-1 rounded bg-nexa-green/10 text-nexa-green font-medium">Transcript available</span>
+                <span className="px-2 py-1 rounded bg-nexa-purple/10 text-nexa-purple font-medium">Analysis ready</span>
               </div>
             </div>
           )}
